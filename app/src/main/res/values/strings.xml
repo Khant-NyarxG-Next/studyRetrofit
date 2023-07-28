@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">studyRetrofit</string>
+	<string name="thumbnail">loading</string>
 </resources>

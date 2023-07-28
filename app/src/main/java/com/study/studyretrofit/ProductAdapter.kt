@@ -21,18 +21,26 @@ class ProductAdapter(private val mList:List<Products>):RecyclerView.Adapter<Prod
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = mList[position]
-        holder.textView.setText(product.title)
+        holder.textView.text = product.title
+        holder.textPrice.text = "Price: $${product.price}"
+        holder.textCategory.text = "Category: ${product.category}"
+        holder.textBrand.text = buildString {
+        append("Brand: ")
+        append(product.brand)
+    }
 
         Picasso.get()
             .load(product.images.get(0))
             .into(holder.imageView)
-
-//        into(holder.imageView)
     }
 
     class ViewHolder(ItemView: View):RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = ItemView.findViewById(R.id.imageView)
-        val textView: TextView = ItemView.findViewById(R.id.textView)
+        val imageView: ImageView = ItemView.findViewById(R.id.imageViewImage)
+        val textView: TextView = ItemView.findViewById(R.id.textViewTitle)
+        val textPrice: TextView = ItemView.findViewById(R.id.textViewTitle)
+        val textCategory: TextView = ItemView.findViewById(R.id.textViewTitle)
+        val textBrand: TextView = ItemView.findViewById(R.id.textViewTitle)
+
     }
 
 }
