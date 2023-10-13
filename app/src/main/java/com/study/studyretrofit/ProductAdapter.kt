@@ -25,9 +25,9 @@ class ProductAdapter(private val mList:List<Products>):RecyclerView.Adapter<Prod
         holder.textPrice.text = "Price: $${product.price}"
         holder.textCategory.text = "Category: ${product.category}"
         holder.textBrand.text = buildString {
-        append("Brand: ")
-        append(product.brand)
-    }
+            append("Brand: ")
+            append(product.brand)
+        }
 
         Picasso.get()
             .load(product.images.get(0))
@@ -37,10 +37,9 @@ class ProductAdapter(private val mList:List<Products>):RecyclerView.Adapter<Prod
     class ViewHolder(ItemView: View):RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = ItemView.findViewById(R.id.imageViewImage)
         val textView: TextView = ItemView.findViewById(R.id.textViewTitle)
-        val textPrice: TextView = ItemView.findViewById(R.id.textViewTitle)
-        val textCategory: TextView = ItemView.findViewById(R.id.textViewTitle)
-        val textBrand: TextView = ItemView.findViewById(R.id.textViewTitle)
-
+        val textPrice: TextView = ItemView.findViewById(R.id.textViewPrice)
+        val textCategory: TextView = ItemView.findViewById(R.id.textViewCategory)
+        val textBrand: TextView = ItemView.findViewById(R.id.textViewBrand)
     }
 
 }
