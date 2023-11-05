@@ -3,6 +3,7 @@ package com.study.studyretrofit
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +33,18 @@ class ProductAdapter(private val mList:List<Products>):RecyclerView.Adapter<Prod
         Picasso.get()
             .load(product.images.get(0))
             .into(holder.imageView)
+        holder.count.text = product.stock.toString()
+
+        holder.addBtn.setOnClickListener {
+            product.stock = product.stock!! + 1
+            holder.count.text = product.stock.toString()
+        }
+        holder.minusBtn.setOnClickListener {
+            if (product.stock!! > 0) {
+                product.stock = product.stock!! - 1
+                holder.count.text = product.stock.toString()
+            }
+        }
     }
 
     class ViewHolder(ItemView: View):RecyclerView.ViewHolder(ItemView) {
@@ -40,6 +53,11 @@ class ProductAdapter(private val mList:List<Products>):RecyclerView.Adapter<Prod
         val textPrice: TextView = ItemView.findViewById(R.id.textViewPrice)
         val textCategory: TextView = ItemView.findViewById(R.id.textViewCategory)
         val textBrand: TextView = ItemView.findViewById(R.id.textViewBrand)
+
+        val count:TextView = ItemView.findViewById(R.id.tv_stockCount)
+        val addBtn:ImageButton = ItemView.findViewById(R.id.btn_add)
+        val minusBtn:ImageButton = ItemView.findViewById(R.id.btn_minus)
+
     }
 
 }
